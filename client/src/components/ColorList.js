@@ -7,7 +7,7 @@ const initialColor = {
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors, fetchColors }) => {
+const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -30,8 +30,6 @@ const ColorList = ({ colors, updateColors, fetchColors }) => {
       console.log('PUT data from SaveEdit', res)
       updateColors([...colors])
       setEditing(false)
-      fetchColors()
-
     })
     .catch(err => console.log(err))
   };
@@ -43,15 +41,9 @@ const ColorList = ({ colors, updateColors, fetchColors }) => {
     .then(res => {
       console.log('delete data', res)
       setEditing(false)
-      fetchColors()
     })
     .catch(err => console.log(err))
   };
-
-  const addColor= color => {
-    setAdding(true)
-    setColorToAdd(color)
-  }
 
   const saveAdd = e => {
     console.log('state inside add color function', colorToAdd)
@@ -147,7 +139,7 @@ const ColorList = ({ colors, updateColors, fetchColors }) => {
           </div>
             </form>
           {/* )}  */}
-    <div className="spacer" />
+          <div className="spacer" />
     </div>
   );
 };
