@@ -22,7 +22,7 @@ const Login = props => {
     .then(res => {
       console.log('this is the Login post data', res)
       localStorage.setItem('token', res.data.payload)
-      props.history.push('/')
+      props.history.push('/profile')
     })
     .catch(err => {
       console.log('No data', err)
